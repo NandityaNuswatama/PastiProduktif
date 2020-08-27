@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="40dp"
+    android:padding="@dimen/regular_padding"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.assessment.EditAssessFragment">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edt_title"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/title"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_delete" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edt_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:hint="@string/time_hint"
+        android:inputType="number|time"
+        app:layout_constraintEnd_toStartOf="@+id/btn_delete"
+        app:layout_constraintStart_toEndOf="@+id/edt_title"
+        app:layout_constraintTop_toTopOf="@+id/edt_title" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edt_assessment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textCapSentences|textMultiLine"
+        android:scrollHorizontally="false"
+        android:maxLength="2000"
+        android:lineSpacingExtra="@dimen/small_padding"
+        android:lineSpacingMultiplier="1.25"
+        android:hint="@string/activity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/edt_title"
+        app:layout_constraintTop_toBottomOf="@+id/edt_title" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="90dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/regular_button"
+        android:text="@string/update"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/btn_cancel"
+        app:layout_constraintTop_toBottomOf="@+id/rg_rating_edit" />
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="90dp"
+        android:layout_height="36dp"
+        android:background="@drawable/irreguler_button"
+        android:text="@string/cancel"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_save" />
+
+    <ImageView
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="10dp"
+        app:srcCompat="@drawable/ic_baseline_delete_forever_24" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Rating"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_assessment" />
+
+    <RadioGroup
+        android:id="@+id/rg_rating_edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView2">
+
+        <RadioButton
+            android:id="@+id/rb_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_1" />
+
+        <RadioButton
+            android:id="@+id/rb_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_2" />
+
+        <RadioButton
+            android:id="@+id/rb_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_3" />
+
+        <RadioButton
+            android:id="@+id/rb_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_4" />
+
+        <RadioButton
+            android:id="@+id/rb_5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_5" />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

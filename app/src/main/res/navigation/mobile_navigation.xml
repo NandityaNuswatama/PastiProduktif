@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_notes">
+
+    <fragment
+        android:id="@+id/navigation_quotes"
+        android:name="com.example.pastiproduktif.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_notes"
+        android:name="com.example.pastiproduktif.ui.assessment.AssessmentFragment"
+        android:label="AssessmentFragment"
+        tools:layout="@layout/fragment_assessment" >
+        <action
+            android:id="@+id/action_navigation_notes_to_newAssessActivity"
+            app:destination="@id/newAssessActivity"/>
+
+        <action
+            android:id="@+id/action_navigation_notes_to_editAssessFragment"
+            app:destination="@id/editAssessFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.pastiproduktif.ui.notifications.NotificationsFragment"
+        android:label="NotificationFragment"
+        tools:layout="@layout/fragment_notifications" />
+    <activity
+        android:id="@+id/newAssessActivity"
+        android:name="com.example.pastiproduktif.ui.assessment.NewAssessActivity"
+        android:label="NewAssessActivity"
+        tools:layout="@layout/activity_new_assess"/>
+    <fragment
+        android:id="@+id/editAssessFragment"
+        android:name="com.example.pastiproduktif.ui.assessment.EditAssessFragment"
+        android:label="EditAssessFragment"
+        tools:layout="@layout/fragment_edit_assess">
+        <argument
+            android:name="assessment"
+            app:argType="com.example.pastiproduktif.entity.Assessment"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_editAssessFragment_to_navigation_notes"
+            app:destination="@id/navigation_notes" />
+    </fragment>
+
+</navigation>
