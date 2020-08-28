@@ -102,13 +102,6 @@ class EditAssessFragment : DaggerFragment() {
             edt_title.setText(assess?.title.toString())
             edt_assessment.setText(assess?.description.toString())
             edt_time.setText(assess?.time.toString())
-            if (assess != null) {
-                imgRating.getIndex(assess.rating)
-            }
-
-            if (assess != null) {
-                Timber.i(assess.rating.toString())
-            }
         }
     }
 
@@ -140,7 +133,6 @@ class EditAssessFragment : DaggerFragment() {
                 date = assess.date,
                 time = edt_time.text.toString(),
                 rating = imgRating.getResourceId(index, 2)
-
             )
             assessmentViewModel.insert(assessment)
             Timber.i(assessment.id.toString())
