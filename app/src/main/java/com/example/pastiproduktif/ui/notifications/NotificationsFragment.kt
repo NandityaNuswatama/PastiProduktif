@@ -20,6 +20,6 @@ class NotificationsFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        childFragmentManager.beginTransaction().add(R.id.setting_container, SettingPref()).commit()
+        childFragmentManager.beginTransaction().replace(R.id.setting_container, SettingPref()).commit()
     }
 }

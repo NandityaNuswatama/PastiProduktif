@@ -66,9 +66,6 @@ class NewAssessActivity : DaggerAppCompatActivity() {
     }
 
     private fun getCurrentDate(): String {
-        val dateFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
-        val date = Date()
-
-        return dateFormat.format(date)
+        return assessmentViewModel.setDate()
     }
 }

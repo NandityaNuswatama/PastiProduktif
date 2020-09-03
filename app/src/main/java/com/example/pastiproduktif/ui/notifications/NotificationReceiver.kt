@@ -30,12 +30,12 @@ class NotificationReceiver: BroadcastReceiver() {
         private const val MAX_STACK = 2
         private const val TIME_FORMAT = "HH:mm"
         private const val EXTRA_MESSAGE = "extra_message"
-        private const val EXTRA_REPEAT = 3*60*1000L
+        private const val EXTRA_REPEAT = 2*60*1000L
     }
 
     override fun onReceive(context: Context, intent: Intent) {
         val message = intent.getStringExtra(EXTRA_MESSAGE)
-        showNotification(context, message)
+        showNotification(context, message!!)
     }
 
     fun setNotify(context: Context, time: String, message: String) {
@@ -57,6 +57,7 @@ class NotificationReceiver: BroadcastReceiver() {
     }
 
     private fun showNotification(context: Context, message: String){
+        idNotification++
         val intent = Intent(context, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         val pendingIntent = PendingIntent.getActivity(context,0,intent,0)
@@ -73,6 +74,7 @@ class NotificationReceiver: BroadcastReceiver() {
             mBuilder = NotificationCompat.Builder(context, channelId)
                 .setContentTitle("This is " + stackNotif[idNotification].id.toString()+" Notification")
                 .setContentText(stackNotif[idNotification].message)
+                .setContentText(message)
                 .setSmallIcon(R.drawable.ic_baseline_notifications_active_24)
                 .setLargeIcon(largeIcon)
                 .setGroup(GROUP_KEY)
@@ -81,14 +83,14 @@ class NotificationReceiver: BroadcastReceiver() {
                 .setVibrate(vibrationPattern)
         } else{
             val inboxStyle = NotificationCompat.InboxStyle()
-                .addLine("This is " + stackNotif[idNotification].id.toString()+" Notification")
-                .addLine("This is " + stackNotif[idNotification-1].id.toString()+" Notification")
+                .addLine("This is " + stackNotif[idNotification].sender.toString()+" Notification")
+                .addLine("This is " + stackNotif[idNotification-1].sender.toString()+" Notification")
                 .setBigContentTitle("$idNotification new notification")
                 .setSummaryText("Stack Notification")
 
             mBuilder = NotificationCompat.Builder(context, channelId)
                 .setContentTitle("$idNotification new notification")
-                .setContentText("StackNotification")
+                .setContentText(message)
                 .setSmallIcon(R.drawable.ic_baseline_notifications_active_24)
                 .setGroup(GROUP_KEY)
                 .setGroupSummary(true)

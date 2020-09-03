@@ -2,6 +2,7 @@ package com.example.pastiproduktif.ui.notifications
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.Toast
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import com.example.pastiproduktif.R
@@ -18,9 +19,11 @@ internal class SettingPref: PreferenceFragmentCompat(), SharedPreferences.OnShar
         broadcastReceiver = NotificationReceiver()
 
         if(switch.isChecked){
-            context?.let { broadcastReceiver.setNotify(it, "09:00","Cool Message Here") }
+            context?.let { broadcastReceiver.setNotify(it, "09:00","Don't Forget to write your activity")}
+                Toast.makeText(context, "Remainder actives", Toast.LENGTH_SHORT).show()
         } else
-            context?.let { broadcastReceiver.cancelNotification(it) }
+            context?.let { broadcastReceiver.cancelNotification(it)}
+                Toast.makeText(context, "Remainder inactive", Toast.LENGTH_SHORT).show()
     }
 
     private fun init() {

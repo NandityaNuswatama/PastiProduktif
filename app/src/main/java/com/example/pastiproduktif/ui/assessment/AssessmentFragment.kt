@@ -67,8 +67,10 @@ class AssessmentFragment : DaggerFragment(), ActivityAssessmentAdapter.Interacti
             assessmentAdapter = ActivityAssessmentAdapter(
                 allAssessment, this@AssessmentFragment
             )
+            setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this@AssessmentFragment.context)
             adapter = assessmentAdapter
+            adapter
             val swipe = ItemTouchHelper(initSwipeToDelete())
             swipe.attachToRecyclerView(rv_assessment)
         }

@@ -8,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.pastiproduktif.db.ActivityRepository
 import com.example.pastiproduktif.db.AssessmentDatabase
 import com.example.pastiproduktif.entity.Assessment
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 class AssessmentViewModel @Inject constructor(private var assessmentRepository: ActivityRepository, application: Application): ViewModel() {
@@ -30,12 +32,14 @@ class AssessmentViewModel @Inject constructor(private var assessmentRepository: 
         assessmentRepository.deleteById(id)
     }
 
-    fun update(assessment: Assessment) {
-        assessmentRepository.update(assessment)
-    }
-
     fun getAllAssessment(): LiveData<List<Assessment>> {
         return assessmentRepository.getAllAssessment()
     }
 
+    fun setDate(): String {
+        val dateFormat = SimpleDateFormat("EEE, dd-MMM-yyyy", Locale.getDefault())
+        val date = Date()
+
+        return dateFormat.format(date)
+    }
 }
